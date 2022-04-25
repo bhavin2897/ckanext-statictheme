@@ -2,13 +2,12 @@
 
 # ckanext-statictheme
 
-**TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
+Static theme and template for NFDI4Chem. 
+Used to for HTML, CSS changes as recommened by offical CKAN doc. 
 
 
 ## Requirements
-
-**TODO:** For example, you might want to mention here which versions of CKAN this
-extension works with.
+No external requirements needed. 
 
 If your extension works across different versions you can add the following table:
 
@@ -16,10 +15,8 @@ Compatibility with core CKAN versions:
 
 | CKAN version    | Compatible?   |
 | --------------- | ------------- |
-| 2.6 and earlier | not tested    |
-| 2.7             | not tested    |
-| 2.8             | not tested    |
-| 2.9             | not tested    |
+| 2.8 and earlier             | not tested    |
+| 2.9             | yes    |
 
 Suggested values:
 
@@ -31,9 +28,7 @@ Suggested values:
 
 ## Installation
 
-**TODO:** Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
+This theme is internally for NFDI4Chem Ckan overarching search service. 
 
 To install ckanext-statictheme:
 
@@ -43,7 +38,7 @@ To install ckanext-statictheme:
 
 2. Clone the source and install it on the virtualenv
 
-    git clone https://github.com/Bhavhub/ckanext-statictheme.git
+    git clone https://github.com/bhavin2897/ckanext-statictheme.git
     cd ckanext-statictheme
     pip install -e .
 	pip install -r requirements.txt
