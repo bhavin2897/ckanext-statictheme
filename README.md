@@ -50,6 +50,10 @@ To install ckanext-statictheme:
 4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
 
      sudo service apache2 reload
+     
+     or if using deployed production server
+     
+     restart Supervisor and Nginx
 
 
 ## Config settings
