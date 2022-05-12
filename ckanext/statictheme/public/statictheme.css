@@ -7,7 +7,7 @@
 }
 /* The "bubble" containing the number of new notifications. */
 .account-masthead .account .notificatpetrolions a span {
-  background-color: petrol;
+  background-color: #009CBC;
 }
 /* The text and icons in the user account info. */
 .account-masthead .account ul li a {
@@ -17,7 +17,7 @@
    over them. */
 .account-masthead .account ul li a:hover {
   color: rgba(238, 238, 238, 1) ;
-  background-color: petrol;
+  background-color: #009CBC;
 }
 
 
