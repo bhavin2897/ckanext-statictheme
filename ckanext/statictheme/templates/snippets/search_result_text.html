@@ -1,19 +1,19 @@
 {% if type == 'dataset' %}
-  {% set text_query = ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{q$
+  {% set text_query = ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{query}"', count) %}
   {% set text_query_none = _('No datasets found for "{query}"') %}
   {% set text_no_query = ungettext('{number} dataset found', '{number} datasets found', count) %}
   {% set text_no_query_none = _('No datasets found') %}
 
 {% elif type == 'group' %}
-  {% set text_query = ungettext('{number} group found for "{query}"', '{number} groups found for "{query$
+  {% set text_query = ungettext('{number} group found for "{query}"', '{number} groups found for "{query}"', count) %}
   {% set text_query_none = _('No groups found for "{query}"') %}
   {% set text_no_query = ungettext('{number} group found', '{number} groups found', count) %}
   {% set text_no_query_none = _('No groups found') %}
 
 {% elif type == 'organization' %}
-  {% set text_query = ungettext('{number} repositories found for "{query}"', '{number} repositories foun$
+  {% set text_query = ungettext('{number} repositories found for "{query}"', '{number} repositories found for "{query}"', count) %}
   {% set text_query_none = _('No repositories found for "{query}"') %}
-  {% set text_no_query = ungettext('{number} repositories found', '{number} repositories found', count) $
+  {% set text_no_query = ungettext('{number} repositories found', '{number} repositories found', count) %}
   {% set text_no_query_none = _('No repositories found') %}
 
 {% else %}
@@ -43,3 +43,4 @@
     {{ text_no_query_none.format(type=type) }}
   {%- endif -%}
 {%- endif -%}
+
