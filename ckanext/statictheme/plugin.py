@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckanext.footer.blueprints import repository
+from ckanext.statictheme.blueprints import repository
 
 
 class StaticthemePlugin(plugins.SingletonPlugin):
