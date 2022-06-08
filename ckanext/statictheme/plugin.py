@@ -5,7 +5,7 @@ from ckanext.statictheme.blueprints import repository
 
 class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.ITemplateHelpers)
+    #plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IBlueprint)
 
     # IConfigurer
