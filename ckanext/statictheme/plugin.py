@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckanext.statictheme.blueprints import repository
+
 
 
 class StaticthemePlugin(plugins.SingletonPlugin):
@@ -14,5 +14,3 @@ class StaticthemePlugin(plugins.SingletonPlugin):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
 	
-    def get_blueprint(self):
-        return repository
