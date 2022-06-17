@@ -10,13 +10,6 @@ def repositories_present(data_dict = None):
        data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
     return org
 
-def repository_show(data_dict=None):
-    repo_name = repositories_present()
-    packages_of_repo = toolkit.get_action('organization_show')(
-        data_dict = {'id': 'chemotion'}
-    )
-    return packages_of_repo
-
 
 class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
@@ -33,5 +26,4 @@ class StaticthemePlugin(plugins.SingletonPlugin):
 
 
     def get_helpers(self):
-        return {'repositories_present': repositories_present,
-                'repository_show': repository_show}
+        return {'repositories_present': repositories_present}
