@@ -8,6 +8,9 @@
         {% set truncate=truncate or 0 %}
             <section class="group-list module module-narrow module-shallow">
                 <header class="module-heading">
+                    <a class="module-image" href="{{ url }}">
+                        <img src="{{ repo.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ repo.name }}" />
+                    </a>
                     <h3 class="media-heading"><a href={{ url }}>{{ repo.title  }}</a></h3>
                         {% if repo.description %}
                     {% if truncate == 0 %}
