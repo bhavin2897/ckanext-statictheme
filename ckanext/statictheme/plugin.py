@@ -13,7 +13,7 @@ def repositories_present(data_dict = None):
 def repository_show(data_dict=None):
     repo_name = repositories_present()
     packages_of_repo = toolkit.get_action('organization_show')(
-        data_dict = {'id': 'massbank'}
+        data_dict = {'id': 'chemotion'}
     )
     return packages_of_repo
 
