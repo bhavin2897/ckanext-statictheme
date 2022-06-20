@@ -22,7 +22,7 @@
                 </header>
               {% set list_class = "list-unstyled dataset-list" %}
               {% set item_class = "dataset-item module-content" %}
-                {%  set repo_data = h.get_organization(org=doosra_org, include_datasets = True, limit = 4 )  %}
+                {%  set repo_data = h.get_organization(org=doosra_org, include_datasets = True)  %}
               {% snippet 'snippets/package_list.html', packages=repo_data.packages[:4], list_class=list_class, item_class=item_class, truncate=120 %}
 
           </section>
