@@ -1,9 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
-
-#trying =  data_dict.update(data_dict.setdefault('type','repository'))
-
+''' to display repository's dataset on the home page'''
 def repositories_present(data_dict = None):
 
     org =  toolkit.get_action('organization_list')(
