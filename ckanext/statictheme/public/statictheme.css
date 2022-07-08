@@ -113,34 +113,45 @@ body {
 }
 
 
-.cookie-container {
+
+
+
+/*****************Cookie accept Bar ****************************/
+
+.cookieAcceptBar {
+  display:none;
   position: fixed;
-  bottom: -100%;
-  left: 0;
+  top: 0;
+  left:0;
   right: 0;
-  background: #2f3640;
-  color: #f5f6fa;
-  padding: 0 32px;
-  box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
-
-  transition: 400ms;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  z-index: 99999;
+  padding-top: 3%;
+  width: 100%;
+  height: 30%;
+  opacity: 0.9;
 }
 
-.cookie-container.active {
-  bottom: 0;
+.cookieAcceptBar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.cookie-container a {
-  color: #f5f6fa;
-}
-
-.cookie-btn {
-  background: #e84118;
-  border: 0;
-  color: #f5f6fa;
-  padding: 12px 48px;
-  font-size: 18px;
-  margin-bottom: 16px;
-  border-radius: 8px;
+.cookieAcceptBarButton {
   cursor: pointer;
+  border: none;
+  background-color: #2387c0;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 10px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
 }
+
+/**************************************************/
