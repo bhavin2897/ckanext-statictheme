@@ -18,10 +18,10 @@ $(document).ready(function(){
 
 function cookiesPolicyBar(){
     // Check cookie
-    if (getCookie('ldm_cookies_accepted') != "active") $('#cookieAcceptBar').show();
+    if (getCookie('mtm_consent') != "active") $('#cookieAcceptBar').show();
     //Assign cookie on click
     $('#cookieAcceptBarConfirm').on('click',function(){
-        setCookie('ldm_cookies_accepted', 'active', 7); // cookie will expire in seven days
+        setCookie('mtm_consent', 'active', 7); // cookie will expire in seven days
         $('#cookieAcceptBar').fadeOut();
     });
 }
