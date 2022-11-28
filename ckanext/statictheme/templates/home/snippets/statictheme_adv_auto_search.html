@@ -1,0 +1,42 @@
+{% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=3) %}
+{% set placeholder = _('E.g. 1h-nmr') %}
+<div class="module module-search module-narrow module-shallow box">
+  <form class="module-content search-form" method="get" action="{% url_for 'dataset.search' %}">
+    <h3 class="heading">{{ _("Search dataset") }}</h3>
+{% block search_input %}
+
+    {# <div class="search-input form-group search-giant search-autocomplete-wrapper"
+             data-module="ckanext-search-autocomplete"
+             data-module-suggestion-box="#search-autocomplete--suggestion-box"
+             data-module-autocomplete-input="#field-giant-search" >
+      <input aria-label="{% block header_site_search_label %}{{ placeholder }}{% endblock %}"
+             id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}"> #}
+      {% block search_input_button %}
+        {# <ul id="search-autocomplete--suggestion-box" class="suggestion-box">
+            {% set suggestion_groups = [
+                ('datasets', 'Relevant datasets'),
+                ('categories','Browse filters')
+            ]
+            %}
+            {% for section, label in suggestion_groups %}
+                <li data-section="{{ section }}" class="suggestion-section">
+                    <ul class="suggestions" data-label="{{ _(label) }}"></ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <button class="search-input form-group search-giant" type="submit" aria-labelledby="search-label">
+          <i class="fa fa-search"></i>
+            <span class="sr-only" id="search-label">{{ _('Search') }}</span>
+        </button> #}
+        {% snippet 'advanced_search/advanced_search_search_form.html' %}
+      {% endblock %}
+    </div>
+     </form>
+  {% endblock %}
+<!--  <div class="tags">-->
+<!--    <h3>{{ _('Popular tags') }}</h3>-->
+<!--    {% for tag in tags %}-->
+<!--      <a class="tag" href="{% url_for 'dataset.search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>-->
+<!--    {% endfor %}-->
+<!--  </div>-->
+</div>
