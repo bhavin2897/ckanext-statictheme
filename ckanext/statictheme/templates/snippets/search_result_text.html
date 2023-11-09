@@ -17,10 +17,16 @@
   {% set text_no_query_none = _('No repositories found') %}
 
 {% elif type == 'repository' %}
-  {% set text_query = ungettext('{number} repositories found for "{query}"', '{number} repositories found for "{query}"', count) %}
+  {% set text_query = ungettext('{number} repository found for "{query}"', '{number} repositories found for "{query}"', count) %}
   {% set text_query_none = _('No repositories found for "{query}"') %}
-  {% set text_no_query = ungettext('{number} repositories found', '{number} repositories found', count) %}
+  {% set text_no_query = ungettext('{number} repository found', '{number} repositories found', count) %}
   {% set text_no_query_none = _('No repositories found') %}
+
+{% elif type == 'molecule_view' %}
+  {% set text_query = ungettext('{number} molecule found for "{query}"', '{number} molecules found for "{query}"', count) %}
+  {% set text_query_none = _('No molecules found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} molecule found', '{number} molecules found', count) %}
+  {% set text_no_query_none = _('No molecules found') %}
 
 
 {% else %}
