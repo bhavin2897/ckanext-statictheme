@@ -21,7 +21,7 @@
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ckanInstanceURL = 'http://ckanchem11.test.service.tib.eu/'; // For production
+    const ckanInstanceURL = 'http://localhost:5000/'; // For production
 
     // Fetch Dataset Count
     fetch(`${ckanInstanceURL}/api/3/action/package_search?rows=0`)
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.success) {
                 const datasetCount = data.result.count;
-                displayCount('dataset-count', datasetCount, 'dataset', 'datasets');
+                displayCount('dataset-count', datasetCount, 'Dataset', 'Datasets');
             }
         });
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.success) {
                 const organizationCount = data.result.length;
-                displayCount('organization-count', organizationCount, 'organization', 'organizations');
+                displayCount('organization-count', organizationCount, 'Repository', 'Repositories');
             }
         });
 
@@ -56,12 +56,16 @@ function ungettext(singular, plural, count) {
 
 </script>
 
+{% set repo_count = h.repositories_count() %}
+{% set dataset_count = h.dataset_count() %}
+
 <div class = "centered-h3">
-    <h2> Search Across      <br> </h2>
-    <h2 id="dataset-count"> ...</h2>
-    <h2> Datasets & </h2>
-    <h2 id="organization-count">... </h2>
-    <h2> <br> Repositories </h2>
+    <h2> Search Across <br> </h2>
+    <h2 id="dataset-count">...</h2>
+<!--    <h2>{{ dataset_count }} Datasets &</h2>-->
+
+    <h2>&  {{ repo_count }} Repositories </h2>
+<!--    <h2 id="organization-count">... </h2>-->
 </div>
 
 <!--<div id="organization-count">Loading organizations...</div>-->
