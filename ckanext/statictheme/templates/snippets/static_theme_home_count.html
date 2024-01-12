@@ -21,7 +21,7 @@
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ckanInstanceURL = 'http://localhost:5000/'; // Replace with your CKAN instance URL
+    const ckanInstanceURL = window.location.origin ; // Replace with your CKAN instance URL
     const apiUrl = `${ckanInstanceURL}/api/3/action/package_list`;
 
     fetch(apiUrl)
