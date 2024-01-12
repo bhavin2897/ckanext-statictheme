@@ -21,7 +21,7 @@
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ckanInstanceURL = 'http://localhost:5000/'; // For production
+    const ckanInstanceURL = 'window.location.origin'; // For production
 
     // Fetch Dataset Count
     fetch(`${ckanInstanceURL}/api/3/action/package_search?rows=0`)
