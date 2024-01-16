@@ -9,20 +9,20 @@ def repositories_present():
     return org
 
 
-def repositories_dataset_count():
-    """Number of repositories in CKAN organizations &
-    Number of datasets in the repositories list. """
-    each_repo_count = []
-    list_org = toolkit.get_action('organization_list')(
-        data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-    count_to_display_repo = len(list_org)
-
-    for package_count in list_org:
-        each_repo_count.append(package_count['package_count'])
-
-    count_to_display_dataset = sum(each_repo_count)
-
-    return count_to_display_repo,count_to_display_dataset
+# def repositories_dataset_count():
+#     """Number of repositories in CKAN organizations &
+#     Number of datasets in the repositories list. """
+#     each_repo_count = []
+#     list_org = toolkit.get_action('organization_list')(
+#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
+#     count_to_display_repo = len(list_org)
+#
+#     for package_count in list_org:
+#         each_repo_count.append(package_count['package_count'])
+#
+#     count_to_display_dataset = sum(each_repo_count)
+#
+#     return count_to_display_repo,count_to_display_dataset
 
 
 # def dataset_count():
@@ -54,6 +54,6 @@ class StaticthemePlugin(plugins.SingletonPlugin):
                              'statictheme')
 
     def get_helpers(self):
-        return {'repositories_present': repositories_present,
-                'repositories_dataset_count': repositories_dataset_count, }
+        return {'repositories_present': repositories_present, }
+                # 'repositories_dataset_count': repositories_dataset_count, }
                 # 'dataset_count':  dataset_count,}
