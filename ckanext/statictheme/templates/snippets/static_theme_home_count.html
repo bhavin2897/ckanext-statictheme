@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const datasetCount = parseInt(datasetCountElement.getAttribute('data-dataset-count'), 10);
 
     // Proceed with the animation using the datasetCount
-    animateCount(0, datasetCount, 500); // Animate over 1000 milliseconds
+    animateCount(0, datasetCount, 500); // Animate over 500 milliseconds
 
     function animateCount(start, end, duration) {
         let startTimestamp = null;
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            datasetCountElement.innerText = Math.floor(progress * (end - start) + start);
+            const currentCount = Math.floor(progress * (end - start) + start);
+            datasetCountElement.innerText = currentCount.toLocaleString(); // Format with commas
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             }
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.requestAnimationFrame(step);
     }
 });
+
 
 </script>
 
