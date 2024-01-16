@@ -21,36 +21,37 @@
 {% set repo_count, dataset_count = h.repositories_dataset_count() %}
 {# {% set dataset_count = h.dataset_count() %} #}
 
-<script>
+<!--<script>-->
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the dataset count from the data attribute
-    const datasetCountElement = document.getElementById('dataset-count');
-    const datasetCount = parseInt(datasetCountElement.getAttribute('data-dataset-count'), 10);
+<!--document.addEventListener('DOMContentLoaded', function () {-->
+<!--    // Get the dataset count from the data attribute-->
+<!--    const datasetCountElement = document.getElementById('dataset-count');-->
+<!--    const datasetCount = parseInt(datasetCountElement.getAttribute('data-dataset-count'), 10);-->
 
-    // Proceed with the animation using the datasetCount
-    animateCount(0, datasetCount, 1000); // Animate over 1000 milliseconds
+<!--    // Proceed with the animation using the datasetCount-->
+<!--    animateCount(0, datasetCount, 1000); // Animate over 1000 milliseconds-->
 
-    function animateCount(start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            datasetCountElement.innerText = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-});
+<!--    function animateCount(start, end, duration) {-->
+<!--        let startTimestamp = null;-->
+<!--        const step = (timestamp) => {-->
+<!--            if (!startTimestamp) startTimestamp = timestamp;-->
+<!--            const progress = Math.min((timestamp - startTimestamp) / duration, 1);-->
+<!--            datasetCountElement.innerText = Math.floor(progress * (end - start) + start);-->
+<!--            if (progress < 1) {-->
+<!--                window.requestAnimationFrame(step);-->
+<!--            }-->
+<!--        };-->
+<!--        window.requestAnimationFrame(step);-->
+<!--    }-->
+<!--});-->
 
-</script>
+<!--</script>-->
 
 
 <div class = "centered-h3">
     <h2> Search Across <br> </h2>
-    <h2 id="dataset-count" data-dataset-count="{{ dataset_count }}"> ... </h2>
+<!--    <h2 id="dataset-count" data-dataset-count="{{ dataset_count }}"> ... </h2>-->
+    <h2> {{ dataset_count }} Datasets </h2>
     <h2>&  {{ repo_count }} Repositories </h2>
 
 </div>
