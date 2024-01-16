@@ -1,5 +1,5 @@
-
-{% for repo in h.repositories_present() %}
+{% set repositories_present, do_not_use, do_not_use = h.repositories_dataset_present_count() %}
+{% for repo in repositories_present %}
 
 <div class="box">
   {% set second_repo = 'massbank' %}
