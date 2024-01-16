@@ -18,8 +18,8 @@
 }
 </style>
 
-{% set repo_count = h.repositories_count() %}
-{% set dataset_count = h.dataset_count() %}
+{% set repo_count, dataset_count = h.repositories_dataset_count() %}
+{# {% set dataset_count = h.dataset_count() %} #}
 
 <script>
 
