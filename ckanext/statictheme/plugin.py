@@ -2,11 +2,11 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 
-# def repositories_present():
-#     """ Datasets present in the repositories list. """
-#     org = toolkit.get_action('organization_list')(
-#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-#     return org
+def repositories_present():
+    """ Datasets present in the repositories list. """
+    org = toolkit.get_action('organization_list')(
+        data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
+    return org
 
 
 def repositories_dataset_count():
