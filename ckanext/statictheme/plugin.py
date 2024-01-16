@@ -2,42 +2,27 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 
-def repositories_present():
-    """ Datasets present in the repositories list. """
-    org = toolkit.get_action('organization_list')(
+# def repositories_present():
+#     """ Datasets present in the repositories list. """
+#     org = toolkit.get_action('organization_list')(
+#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
+#     return org
+
+
+def repositories_dataset_count():
+    """Number of repositories in CKAN organizations &
+    Number of datasets in the repositories list. """
+    each_repo_count = []
+    list_org = toolkit.get_action('organization_list')(
         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-    return org
+    count_to_display_repo = len(list_org)
 
+    for package_count in list_org:
+        each_repo_count.append(package_count['package_count'])
 
-# def repositories_dataset_count():
-#     """Number of repositories in CKAN organizations &
-#     Number of datasets in the repositories list. """
-#     each_repo_count = []
-#     list_org = toolkit.get_action('organization_list')(
-#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-#     count_to_display_repo = len(list_org)
-#
-#     for package_count in list_org:
-#         each_repo_count.append(package_count['package_count'])
-#
-#     count_to_display_dataset = sum(each_repo_count)
-#
-#     return count_to_display_repo,count_to_display_dataset
+    count_to_display_dataset = sum(each_repo_count)
 
-
-# def dataset_count():
-#     """ Number of datasets from each of the repository"""
-#     each_repo_count = []
-#     repository_list = toolkit.get_action('organization_list')(
-#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-#
-#     for package_count in repository_list:
-#         each_repo_count.append(package_count['package_count'])
-#
-#     count_to_display = sum(each_repo_count)
-#     # count_to_display = 1000
-#
-#     return count_to_display
+    return count_to_display_repo,count_to_display_dataset
 
 
 class StaticthemePlugin(plugins.SingletonPlugin):
@@ -54,6 +39,6 @@ class StaticthemePlugin(plugins.SingletonPlugin):
                              'statictheme')
 
     def get_helpers(self):
-        return {'repositories_present': repositories_present, }
-                # 'repositories_dataset_count': repositories_dataset_count, }
+        return {'repositories_present': repositories_present,
+                'repositories_dataset_count': repositories_dataset_count, }
                 # 'dataset_count':  dataset_count,}
