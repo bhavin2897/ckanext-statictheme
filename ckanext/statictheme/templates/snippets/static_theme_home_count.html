@@ -18,61 +18,41 @@
 }
 </style>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-    const ckanInstanceURL = 'http://ckanchem11.test.service.tib.eu/'; // For production
-
-    // Fetch Dataset Count
-    fetch(`${ckanInstanceURL}/api/3/action/package_search?rows=0`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const datasetCount = data.result.count;
-                displayCount('dataset-count', datasetCount, 'Dataset', 'Datasets');
-            }
-        });
-
-    // Fetch Organization Count
-    fetch(`${ckanInstanceURL}/api/3/action/organization_list?all_fields=false`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const organizationCount = data.result.length;
-                displayCount('organization-count', organizationCount, 'Repository', 'Repositories');
-            }
-        });
-
-    function displayCount(elementId, count, singular, plural) {
-        const text = ungettext(`%d ${singular}`, `%d ${plural}`, count).replace('%d', count);
-        document.getElementById(elementId).innerText = text;
-    }
-});
-
-function ungettext(singular, plural, count) {
-    return count === 1 ? singular : plural;
-}
-
-
-</script>
-
 {% set repo_count = h.repositories_count() %}
 {% set dataset_count = h.dataset_count() %}
 
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the dataset count from the data attribute
+    const datasetCountElement = document.getElementById('dataset-count');
+    const datasetCount = parseInt(datasetCountElement.getAttribute('data-dataset-count'), 10);
+
+    // Proceed with the animation using the datasetCount
+    animateCount(0, datasetCount, 1000); // Animate over 1000 milliseconds
+
+    function animateCount(start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            datasetCountElement.innerText = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+});
+
+</script>
+
+
 <div class = "centered-h3">
     <h2> Search Across <br> </h2>
-    <h2 id="dataset-count">...</h2>
-<!--    <h2>{{ dataset_count }} Datasets &</h2>-->
-
+    <h2 id="dataset-count" data-dataset-count="{{ dataset_count }}"> ... </h2>
     <h2>&  {{ repo_count }} Repositories </h2>
-<!--    <h2 id="organization-count">... </h2>-->
+
 </div>
 
-<!--<div id="organization-count">Loading organizations...</div>-->
 
-
-<!--<div class="centered-h3">-->
-<!--    <h1>Search across <br>-->
-<!--        132,964 datasets & 4 Repositories</h1>-->
-
-<!--</div>-->

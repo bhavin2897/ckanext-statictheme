@@ -3,25 +3,32 @@ import ckan.plugins.toolkit as toolkit
 
 
 def repositories_present():
+    """ Datasets present in the repositories list. """
     org = toolkit.get_action('organization_list')(
         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-
     return org
 
 
 def repositories_count():
+    """Number of repositories in CKAN organizations"""
     list_org = toolkit.get_action('organization_list')(
         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-
     count_to_display = len(list_org)
 
     return count_to_display
 
 
 def dataset_count():
-    package_list = toolkit.get_action('package_list')({},{})
+    """ Number of datasets from each of the repository"""
+    each_repo_count = []
+    repository_list = toolkit.get_action('organization_list')(
+        data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
 
-    count_to_display = len(package_list)
+    for package_count in repository_list:
+        each_repo_count.append(package_count['package_count'])
+
+    count_to_display = sum(each_repo_count)
+    # count_to_display = 1000
 
     return count_to_display
 
