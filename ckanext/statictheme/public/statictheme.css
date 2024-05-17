@@ -31,6 +31,19 @@ font-family: 'IBM Plex Sans', sans-serif;
 
 .masthead {
   background-color: white;
+  height: 120px;
+
+}
+.masthead .container{
+height: 80px;
+}
+
+.masthead .navbar-collapse{
+line-height: 5;
+}
+
+.masthead .logo img{
+max-height: 100px;
 }
 /* The "navigation pills" in the masthead (the links to Datasets,
    Organizations, etc) when the user's pointer hovers over them. */
