@@ -1,0 +1,19 @@
+.centered-h3 {
+    background-color: white; /* White background for the entire div */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    padding: 20px; /* Padding around the h3 tag */
+    border-radius: 10px; /* Curved edges for the div */
+    margin-top: 20px; /* Space above the div */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid rgb(204, 204, 204); /* Light border */
+    font-family: 'IBM Plex Sans', sans-serif; /* Consistent font style */
+}
+
+.centered-h3 h3 {
+    background-color: white;
+    border-radius: 5px; /* Curved edges */
+    padding: 10px; /* Padding inside the h3 tag */
+    margin: 0; /* Removes default margin */
+    color: rgb(68, 68, 68); /* Font color aligned with the site's theme */
+}

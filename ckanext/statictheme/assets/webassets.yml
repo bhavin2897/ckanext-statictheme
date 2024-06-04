@@ -1,14 +1,32 @@
-# statictheme-js:
-#   filter: rjsmin
-#   output: ckanext-statictheme/%(version)s-statictheme.js
-#   contents:
-#     - js/statictheme.js
-#   extra:
-#     preload:
-#       - base/main
+statictheme_css:
+  output: ckanext-statictheme/%(version)s_statictheme_css.css
+  contents:
+    - styles/statictheme.css
 
-# statictheme-css:
-#   filter: cssrewrite
-#   output: ckanext-statictheme/%(version)s-statictheme.css
-#   contents:
-#     - css/statictheme.css
+cookie_bar_css:
+  output: ckanext-statictheme/%(version)s_cookie_bar_css.css
+  contents:
+    - styles/cookie_bar.css
+
+home_count_css:
+  output: ckanext-statictheme/%(version)s_home_count_css.css
+  contents:
+    - styles/home_count.css
+
+cookie_bar_js:
+  filters: rjsmin
+  output: ckanext-statictheme/%(version)s_cookie_accept_bar.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - js/cookie_accept_bar.js
+
+home_count_js:
+  filters: rjsmin
+  output: ckanext-statictheme/%(version)s_home_count.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - js/home_count.js

@@ -6,8 +6,8 @@
   margin-right: auto;
   left: 20px;
   right: 20px;
-  max-width: 818px;
-  background: #2F4858;
+  max-width: 1000px;
+  background: #00617c;
   border-radius: 8px;
   z-index: 3;
 }
@@ -29,7 +29,7 @@
   padding: 32px 46px 28px 32px;
   font-size: 14px;
     color: #fff;
-    font-family: montserrat-regular;
+    font-family: 'IBM Plex Sans', sans-serif;
     line-height: 17px;
 }
 .cookie-content p{
@@ -64,7 +64,7 @@ color: #fff;
   border-radius: 50.33px;
   color: #fff;
   font-size: 14px;
-  font-family: montserrat-regular;
+  font-family: 'IBM Plex Sans', sans-serif;;
   font-weight: 400;
   font-style: normal;
   text-align: center;

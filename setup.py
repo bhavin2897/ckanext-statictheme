@@ -16,9 +16,9 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.0.1',
+    version='2.0.0',
 
-    description='''basic theme changes on front-end''',
+    description='''basic theme changes on front-end & additional functionality on html''',
     long_description=long_description,
     long_description_content_type="text/markdown",
 
@@ -26,8 +26,8 @@ setup(
     url='https://github.com/Bhavhub/ckanext-statictheme',
 
     # Author details
-    author='''Bhavin''',
-    author_email='''bhavin@localhost''',
+    author='''Bhavin Katabathuni''',
+    author_email='''bhavin2897@gmail.com''',
 
     # Choose your license
     license='AGPL',
