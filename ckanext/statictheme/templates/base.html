@@ -2,7 +2,8 @@
 
 {% block styles %}
     {{ super() }}
-    {% asset 'ckanext-statictheme/statictheme_css' %}
+    {% include 'snippets/statictheme_css.html' %}
+    {% include 'snippets/statictheme_cookie_bar_asset.html' %}
 <!--    <link rel="stylesheet" href="styles/statictheme.css" />-->
 
 {% endblock %}
