@@ -1,0 +1,26 @@
+{% set url = h.url_for('home') + pkg.type + '/' %}
+{% set url2 = url + pkg.name %}
+
+    <section class="module module-narrow module-shallow export">
+      <h2 class="module-heading"><i class="fa fa-share-square-o"></i> {{_('Export')}}</h2>
+      <p class="module-content">
+
+        <a target="_blank" href="{{ url2 }}.rdf?profiles=euro_dcat_ap">DCAT-AP(rdf/xml)   </a>
+        <a target="_blank" href="{{ url2 }}.xml?profiles=euro_dcat_ap">DCAT-AP(xml) </a>
+        <a target="_blank" href="{{ url2 }}.ttl?profiles=euro_dcat_ap">DCAT-AP(ttl) </a>
+        <a target="_blank" href="{{ url2 }}.jsonld?profiles=euro_dcat_ap">DCAT-AP(jsonld) </a>
+
+<!--        <a href="{{ url }}datacite/{{ pkg.name }}.xml">DataCite</a>-->
+<!--        <a href="{{ url }}csl/{{ pkg.name }}.json">CSL</a>-->
+<!--        <a href="{{ url }}dublincore/{{ pkg.name }}.xml">DublinCore</a>-->
+<!--        <a href="{{ url }}bibtex/{{ pkg.name }}">BibTex</a>-->
+
+      </p>
+
+        <p class="module-content">
+            <a target="_blank" href="{{ url2 }}.rdf?profiles=schemaorg">Schema.Org(rdf/xml)   </a>
+            <a target="_blank" href="{{ url2 }}.xml?profiles=schemaorg">Schema.Org(xml) </a>
+            <a target="_blank" href="{{ url2 }}.ttl?profiles=schemaorg">Schema.Org(ttl) </a>
+            <a target="_blank" href="{{ url2 }}.jsonld?profiles=schemaorg">Schema.Org(jsonld) </a>
+        </p>
+    </section>
