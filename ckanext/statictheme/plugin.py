@@ -1,12 +1,10 @@
+from __future__ import annotations
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckanext.statictheme import blueprints
 
-
-# def repositories_present():
-#     """ Datasets present in the repositories list. """
-#     org = toolkit.get_action('organization_list')(
-#         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-#     return org
+from flask import Blueprint, render_template, session , request, abort
 
 
 def repositories_dataset_present_count():
@@ -76,3 +74,7 @@ class StaticthemePlugin(plugins.SingletonPlugin):
         return {  # 'repositories_present': repositories_present,
             'repositories_dataset_present_count': repositories_dataset_present_count, }
         # 'dataset_count':  dataset_count,}
+
+    # IBlueprint
+    def get_blueprint(self):
+        return blueprints.static_theme
