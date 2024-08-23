@@ -3,27 +3,9 @@ from __future__ import annotations
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckanext.statictheme import views
+from ckanext.statictheme import helpers
 
 from flask import Blueprint, render_template, session , request, abort
-
-
-def repositories_dataset_present_count():
-    """Number of repositories in CKAN organizations &
-    Number of datasets in the repositories list. """
-    each_repo_count = []
-
-    list_org = toolkit.get_action('organization_list')(
-        data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
-
-    org = list_org
-    count_to_display_repo = len(list_org)
-
-    for package_count in list_org:
-        each_repo_count.append(package_count['package_count'])
-
-    count_to_display_dataset = sum(each_repo_count)
-
-    return org, count_to_display_repo, count_to_display_dataset
 
 
 class StaticthemePlugin(plugins.SingletonPlugin):
@@ -66,14 +48,15 @@ class StaticthemePlugin(plugins.SingletonPlugin):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('assets', 'ckanext-statictheme')
-        #toolkit.add_resource('public/base', 'statictheme')
 
 
-    # ITemplate Helpers
+    # ITemplateHelpers
     def get_helpers(self):
-        return {  # 'repositories_present': repositories_present,
-            'repositories_dataset_present_count': repositories_dataset_present_count, }
-        # 'dataset_count':  dataset_count,}
+        return {
+            'repositories_dataset_present_count': helpers.repositories_dataset_present_count
+            # 'repositories_present': repositories_present,
+            # 'dataset_count':  dataset_count,
+        }
 
     # IBlueprint
     def get_blueprint(self):
