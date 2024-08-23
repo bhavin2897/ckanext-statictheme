@@ -24,3 +24,6 @@ def imprint():
 @static_theme.route(u'/data_protection')
 def dataprotection():
     return render_template('data_protection.html')
+
+def get_blueprints():
+    return [static_theme]

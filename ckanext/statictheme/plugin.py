@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckanext.statictheme import blueprints
+from ckanext.statictheme import views
 
 from flask import Blueprint, render_template, session , request, abort
 
@@ -77,4 +77,4 @@ class StaticthemePlugin(plugins.SingletonPlugin):
 
     # IBlueprint
     def get_blueprint(self):
-        return blueprints.static_theme
+        return views.get_blueprints()
