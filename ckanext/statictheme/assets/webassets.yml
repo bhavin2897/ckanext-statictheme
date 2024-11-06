@@ -16,7 +16,7 @@ home_count_css:
 skeleton_loader_css:
   output: ckanext-statictheme/%(version)s_skeleton_loader.css
   contents:
-    - styles/skeleton-loader.css
+    - styles/skeleton_loader.css
 
 
 cookie_bar_js:
