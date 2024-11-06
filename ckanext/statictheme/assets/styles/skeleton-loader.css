@@ -1,0 +1,15 @@
+.skeleton-loader {
+    background-color: #f0f0f0;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}

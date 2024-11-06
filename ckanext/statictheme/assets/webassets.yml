@@ -13,6 +13,12 @@ home_count_css:
   contents:
     - styles/home_count.css
 
+skeleton_loader_css:
+  output: ckanext-statictheme/%(version)s_skeleton_loader.css
+  contents:
+    - styles/skeleton-loader.css
+
+
 cookie_bar_js:
   filters: rjsmin
   output: ckanext-statictheme/%(version)s_cookie_accept_bar.js
@@ -21,6 +27,17 @@ cookie_bar_js:
       - base/main
   contents:
     - js/cookie_accept_bar.js
+
+
+skeleton_loader_js:
+  filters: rjsmin
+  output: ckanext-statictheme/%(version)s_skeleton_loader.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - js/skeleton_loader.js
+
 
 home_count_js:
   filters: rjsmin

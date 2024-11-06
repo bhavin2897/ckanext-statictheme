@@ -2,8 +2,9 @@
 
 {% block styles %}
     {{ super() }}
-    {% include 'snippets/statictheme_css.html' %}
-    {% include 'snippets/statictheme_cookie_bar_asset.html' %}
+    {% snippet 'snippets/statictheme_css.html' %}
+    {% snippet 'snippets/statictheme_cookie_bar_asset.html' %}
+    {% asset 'ckanext-statictheme/skeleton_loader_css' %}
 <!--    <link rel="stylesheet" href="styles/statictheme.css" />-->
 
 {% endblock %}
