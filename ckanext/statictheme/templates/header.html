@@ -1,4 +1,4 @@
-{% ckan_extends%}
+{% ckan_extends %}
 
 {% block header_logo %}
  <a class="logo" href="/">
@@ -17,13 +17,13 @@
 
         ('dataset.search', _('Datasets')),
         ('molecule.search', _('Molecules')),
-        ('footer.molecule_view', _('Molecule_view')),
+
         ('sparql_interface.index', _('SPARQL')),
         ('home.about', _('About')),
         ('statictheme.help',_('Help')),
   )
   }}
-
+{# ('footer.molecule_view', _('Molecule_view')), #}
 {% endblock %}
 
 

@@ -13,6 +13,7 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IFacets
     def _facets(self, facets_dict, package_type):
@@ -61,3 +62,9 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     # IBlueprint
     def get_blueprint(self):
         return views.get_blueprints()
+
+    # IPackageController
+    def before_search(self, search_params):
+        if "+dataset_type:molecule" in search_params["fq"]:
+            search_params['sort'] = 'title_string asc'
+        return search_params
