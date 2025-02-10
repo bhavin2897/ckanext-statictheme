@@ -106,6 +106,13 @@ color: black;
 }
 
 
+.media-description {
+  word-wrap: break-word;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+
 /* ====================================
    The footer at the bottom of the site
    ==================================== */
