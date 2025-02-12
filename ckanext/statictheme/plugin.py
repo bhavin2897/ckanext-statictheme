@@ -65,6 +65,13 @@ class StaticthemePlugin(plugins.SingletonPlugin):
 
     # IPackageController
     def before_search(self, search_params):
-        if "+dataset_type:molecule" in search_params["fq"]:
-            search_params['sort'] = 'title_string asc'
+        if "+dataset_type:molecule" in search_params.get("fq",""):
+            user_selected_sort = search_params.get("sort")
+            if not user_selected_sort:
+                if search_params.get("q"):
+                    # When searching, use CKAN's default relevance sorting
+                    search_params.pop("sort", None)
+                else:
+                    # If no search query, default to sorting by title (ascending)
+                    search_params["sort"] = "title_string asc"
         return search_params
