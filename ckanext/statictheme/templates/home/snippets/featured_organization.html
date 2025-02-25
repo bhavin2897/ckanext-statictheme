@@ -1,35 +1,9 @@
-{% set repositories_present, do_not_use, do_not_use = h.repositories_dataset_present_count() %}
-{% for repo in repositories_present %}
+{% set repositories_present, count_to_display_repo, do_not_use = h.repositories_dataset_present_count() %}
+
 
 <div class="box">
-  {% set second_repo = 'massbank' %}
-  {% if repo.name == second_repo %}
-      {% set url = h.url_for(controller='organization', action = 'read', id = repo.name) %}
-        {% set truncate=truncate or 0 %}
-            <section class="group-list module module-narrow module-shallow">
-                <header class="module-heading">
-                    <a class="module-image" href="{{ url }}">
-                        <img src="{{ repo.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ repo.name }}" />
-                    </a>
-                    <h3 class="media-heading"><a href={{ url }}>{{ repo.title  }}</a></h3>
-                        {% if repo.description %}
-                    {% if truncate == 0 %}
-                      <p>{{ h.markdown_extract(repo.description)|urlize }}</p>
-                    {% else %}
-                      <p>{{ h.markdown_extract(repo.description, truncate)|urlize }}</p>
-                    {% endif %}
-                        {% endif %}
-                </header>
-              {% set list_class = "list-unstyled dataset-list" %}
-              {% set item_class = "dataset-item module-content" %}
-                {%  set repo_data = h.get_organization(org=second_repo, include_datasets = True )  %}
+    {% snippet "organization/snippets/organization_list.html", organizations=repositories_present %}
 
-              {% snippet 'snippets/package_list.html', packages=repo_data.packages[:4], list_class=list_class, item_class=item_class, truncate=120 %}
+</div>
 
-          </section>
-  {% endif %}
- </div >
-
-
-{% endfor %}
 
