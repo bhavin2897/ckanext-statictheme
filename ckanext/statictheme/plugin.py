@@ -4,9 +4,10 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckanext.statictheme import views
 from ckanext.statictheme import helpers
-
+import logging
 from flask import Blueprint, render_template, session , request, abort
 
+log = logging.getLogger(__name__)
 
 class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
@@ -14,6 +15,8 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
+
+
 
     # IFacets
     def _facets(self, facets_dict, package_type):
@@ -30,11 +33,20 @@ class StaticthemePlugin(plugins.SingletonPlugin):
                            'measurement_technique': 'Measurement Technique',
                            'tags': 'Tags',
                            'license_id': 'License'}
+
+        elif package_type == 'molecule':
+            facets_dict = {
+                            'organization': 'Repositories',
+                            'tags': 'Tags',
+                            'License': 'License',
+                            'measurement_technique_proxy' : 'Related Measurements'}
+
         else:
             facets_dict = {'organization': 'Repositories',
                            'measurement_technique': 'Measurement Technique',
                            'tags': 'Tags',
                            'license_id': 'License'}
+
         return self._facets(facets_dict, package_type)
 
     def group_facets(self, facets_dict, group_type, package_type):
@@ -63,10 +75,12 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     def get_blueprint(self):
         return views.get_blueprints()
 
-    # IPackageController
+
     def before_search(self, search_params):
         if "+dataset_type:molecule" in search_params.get("fq",""):
+
             user_selected_sort = search_params.get("sort")
+
             if not user_selected_sort:
                 if search_params.get("q"):
                     # When searching, use CKAN's default relevance sorting
@@ -74,4 +88,5 @@ class StaticthemePlugin(plugins.SingletonPlugin):
                 else:
                     # If no search query, default to sorting by title (ascending)
                     search_params["sort"] = "title_string asc"
+        # log.debug(search_params)
         return search_params
