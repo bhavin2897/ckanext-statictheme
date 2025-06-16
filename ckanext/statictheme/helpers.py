@@ -2,6 +2,10 @@ import ckan.lib.helpers as h
 import ckan.plugins.toolkit as toolkit
 import ckan.plugins as plugins
 
+from collections import Counter
+import logging
+log = logging.getLogger(__name__)
+
 
 def repositories_dataset_present_count():
     """Number of repositories in CKAN organizations &
@@ -20,3 +24,8 @@ def repositories_dataset_present_count():
     count_to_display_dataset = sum(each_repo_count)
 
     return org, count_to_display_repo, count_to_display_dataset
+
+def get_measurement_count(name,search_facets):
+    """Number of datasets with measurement_technique_proxy field present."""
+
+    return 'Nothing o Return'

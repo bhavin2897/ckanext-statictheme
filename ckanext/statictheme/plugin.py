@@ -36,11 +36,10 @@ class StaticthemePlugin(plugins.SingletonPlugin):
 
         elif package_type == 'molecule':
             facets_dict = {
-                            'organization': 'Repositories',
+                            'organization_proxy': 'Repositories',
                             'tags': 'Tags',
-                            'License': 'License',
-                            'measurement_technique_proxy' : 'Related Measurements'}
-
+                            'measurement_technique_proxy' : 'Related Measurements',
+                            'license_id': 'License'}
         else:
             facets_dict = {'organization': 'Repositories',
                            'measurement_technique': 'Measurement Technique',
@@ -66,7 +65,8 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     # ITemplateHelpers
     def get_helpers(self):
         return {
-            'repositories_dataset_present_count': helpers.repositories_dataset_present_count
+            'repositories_dataset_present_count': helpers.repositories_dataset_present_count,
+            'get_measurement_count' : helpers.get_measurement_count
             # 'repositories_present': repositories_present,
             # 'dataset_count':  dataset_count,
         }
@@ -88,5 +88,14 @@ class StaticthemePlugin(plugins.SingletonPlugin):
                 else:
                     # If no search query, default to sorting by title (ascending)
                     search_params["sort"] = "title_string asc"
-        # log.debug(search_params)
         return search_params
+
+    def after_search(self, search_results, search_params):
+        # count = search_results['count']
+        # results = search_results['results']
+        # facets = search_results['facets']
+        # log.debug(f"Count on {count}")
+        # log.debug(f"Results: {results}")
+        # log.debug(f"Facets: {facets}")
+
+        return search_results
