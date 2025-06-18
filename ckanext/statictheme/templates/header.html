@@ -1,4 +1,4 @@
-{% ckan_extends%}
+{% ckan_extends %}
 
 {% block header_logo %}
  <a class="logo" href="/">
@@ -16,12 +16,16 @@
  {{ h.build_nav_main(
 
         ('dataset.search', _('Datasets')),
-        ('footer.molecule_view', _('Molecule')),
+        ('molecule.search', _('Molecules')),
+
+        {# ('sparql_interface.index', _('SPARQL')), #}
+        {# ('footer.molecule_view', _('Molecule')), #} 
+
         ('home.about', _('About')),
         ('statictheme.help',_('Help')),
   )
   }}
-
+{# ('footer.molecule_view', _('Molecule_view')), #}
 {% endblock %}
 
 
