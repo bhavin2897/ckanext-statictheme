@@ -47,6 +47,5 @@ def get_recent_datasets_by_org():
     )
 
     result = {org_id: count for org_id, count in query}
-    log.debug(result)
 
     return result

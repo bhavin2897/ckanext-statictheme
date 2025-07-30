@@ -36,7 +36,9 @@
     <strong> Lastest datasets </strong>
     {% for org_id, count in org_counts.items() %}
       {% set org = h.get_organization(org_id) %}
+    {% if org and org.title %}
        <span class="ticker-item">  {{ org.title or org_id }} : {{ count }} datasets</span>
+    {% endif %}
   {% endfor %}
   </div>
 </div>
