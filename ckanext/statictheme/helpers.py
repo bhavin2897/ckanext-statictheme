@@ -46,4 +46,7 @@ def get_recent_datasets_by_org():
         .group_by(model.Package.owner_org)
     )
 
-    return {org_id: count for org_id, count in query}
+    result = {org_id: count for org_id, count in query}
+    log.debug(result)
+
+    return result
