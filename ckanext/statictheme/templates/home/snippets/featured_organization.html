@@ -25,28 +25,19 @@
     box-shadow: 0 1px 6px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
 
   .media-item .module-heading {
-    text-align: right;
+<!--    text-align: center;-->
     margin-bottom: 1rem;
   }
 
-.media-item .module-image {
-    display: block;
-    text-align: left;
+  .media-item .module-image img {
+    max-width: 80px;
+    height: auto;
     margin-bottom: 0.5rem;
-    padding-left: 0.5rem;
-}
-
-.media-item .module-image img {
-  max-width: 60px;
-  height: auto;
-  display: inline-block;
-   display: inline-block;
-  float: right;         /* push to the right inside the heading */
-  margin-left: 1rem;
-}
+  }
 
   .media-item .dataset-list {
     list-style: none;
@@ -64,7 +55,7 @@
   }
 
   .media-item .dataset-list li a {
-    color: #333;
+    color: black;
     text-decoration: none;
   }
 
@@ -102,7 +93,7 @@
             {% endfor %}
           </ul>
         {% else %}
-          <p style="font-size: 1rem; color: #333;">No datasets available</p>
+          <p style="font-size: 1rem; color: black;">No datasets available</p>
         {% endif %}
       </div>
     {% endfor %}
