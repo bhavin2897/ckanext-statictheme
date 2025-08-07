@@ -24,7 +24,7 @@
 {% asset 'ckanext-statictheme/home_count_css' %}
 {% asset 'ckanext-statictheme/home_count_js' %}
 
-{% set do_not_use, repo_count, dataset_count = h.repositories_dataset_present_count() %}
+{% set repo_count, dataset_count, do_not_use = h.repositories_dataset_present_count() %}
 
 <div class = "centered-h3">
     <h2> Search Across &nbsp; </h2>

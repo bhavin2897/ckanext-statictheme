@@ -1,9 +1,101 @@
-{% set repositories_present, count_to_display_repo, do_not_use = h.repositories_dataset_present_count() %}
+{% set repositories_present, count_to_display_repo, org_details = h.repositories_dataset_present_count() %}
 
+<style>
+  .featured-org-wrapper {
+    background: #f7f7f7;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
 
-<div class="box">
-    {% snippet "organization/snippets/organization_list.html", organizations=repositories_present %}
+  .media-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
 
+  .media-item {
+    flex: 1 1 calc(20% - 1.5rem); /* 5 per row */
+    min-width: 220px;
+    max-width: 260px;
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .media-item .module-heading {
+<!--    text-align: center;-->
+    margin-bottom: 1rem;
+  }
+
+  .media-item .module-image img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .media-item .dataset-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .media-item .dataset-list li {
+    font-size: 1;
+    margin: 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .media-item .dataset-list li a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .media-item .dataset-list li a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="featured-org-wrapper">
+  <div class="media-grid">
+    {% for repository in org_details %}
+      <div class="media-item">
+        <header class="module-heading">
+          <a class="module-image" href="{{ h.url_for('organization.read', id=repository.name) }}">
+            <img src="{{ repository.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ repository.title }}">
+          </a>
+          <h3 class="media-heading">
+            <a href="{{ h.url_for('organization.read', id=repository.name) }}">
+              {{ repository.title or repository.name }}
+            </a>
+          </h3>
+          {% if repository.description %}
+        <p class="media-description" style="font-size: 1rem; color: light-black;">
+          {{ h.markdown_extract(repository.description, 180) | urlize }}
+        </p>
+  {% endif %}
+        </header>
+
+        {% if repository.packages %}
+          <ul class="dataset-list">
+            {% for ds in repository.packages %}
+              <li>
+                <a href="{{ h.url_for(ds.type ~ '.read', id=ds.name) }}">{{ ds.title | truncate(50, True) }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p style="font-size: 1rem; color: black;">No datasets available</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </div>
-
-

@@ -14,19 +14,53 @@ def repositories_dataset_present_count():
     """Number of repositories in CKAN organizations &
     Number of datasets in the repositories list. """
     each_repo_count = []
+    organization_details = []
 
     list_org = toolkit.get_action('organization_list')(
         data_dict={'type': 'repository', 'sort': 'package_count desc', 'all_fields': True})
 
-    org = list_org
     count_to_display_repo = len(list_org)
+
+    for org in list_org:
+        try:
+            get_org = toolkit.get_action('organization_show')(
+                data_dict={
+                    'id': org['id'],
+                    'include_datasets': True,
+                    'include_dataset_count': True
+                }
+            )
+
+            # Filter only datasets of type 'dataset'
+            filtered_datasets = [
+                ds for ds in get_org.get('packages', [])
+                if ds.get('type') == 'dataset'
+            ]
+
+            # Sort by metadata_modified descending and take 5 latest
+            latest_datasets = sorted(
+                filtered_datasets,
+                key=lambda x: x.get('metadata_modified', ''),
+                reverse=True
+            )[:5]
+
+            # Overwrite 'packages' key with the reduced list
+            get_org['packages'] = latest_datasets
+
+            organization_details.append(get_org)
+
+        except toolkit.ObjectNotFound:
+            log.error(f"Organization '{org}' not found.")
 
     for package_count in list_org:
         each_repo_count.append(package_count['package_count'])
 
     count_to_display_dataset = sum(each_repo_count)
 
-    return org, count_to_display_repo, count_to_display_dataset
+
+    return count_to_display_repo, count_to_display_dataset, organization_details
+
+
 
 def get_measurement_count(name,search_facets):
     """Number of datasets with measurement_technique_proxy field present."""
