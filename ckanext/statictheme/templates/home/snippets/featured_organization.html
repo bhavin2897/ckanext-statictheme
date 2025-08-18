@@ -16,9 +16,9 @@
   }
 
   .media-item {
-    flex: 1 1 calc(20% - 1.5rem); /* 5 per row */
-    min-width: 220px;
-    max-width: 260px;
+    flex: 1 1 calc(50% - 1.5rem); /* 2 per row */
+    min-width: 300px;
+    max-width: 500px;
     background: white;
     border-radius: 6px;
     padding: 1rem;
@@ -34,11 +34,11 @@
 
   .media-item .module-image img {
      max-width: 60px;
-  height: auto;
-  display: inline-block;
-   display: inline-block;
-  float: right;         /* push to the right inside the heading */
-  margin-left: 1rem;
+    height: auto;
+    display: inline-block;
+    display: inline-block;
+    float: right;         /* push to the right inside the heading */
+    margin-left: 1rem;
   }
 
   .media-item .dataset-list {
@@ -68,6 +68,7 @@
 </style>
 
 <div class="featured-org-wrapper">
+    <h3 style="text-align:center"> Latest Datasets </h3>
   <div class="media-grid">
     {% for repository in org_details %}
       <div class="media-item">
