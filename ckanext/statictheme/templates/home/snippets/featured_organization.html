@@ -1,4 +1,4 @@
-{% set repositories_present, count_to_display_repo, org_details = h.repositories_dataset_present_count() %}
+{% set repositories_present, count_to_display_repo, org_details,do_not_use, datasets_modified = h.repositories_dataset_present_count() %}
 
 <style>
   .featured-org-wrapper {
@@ -67,6 +67,8 @@
   }
 </style>
 
+{% set time = 'time' %}
+
 <div class="featured-org-wrapper">
     <h3 style="text-align:center"> Latest Datasets </h3>
   <div class="media-grid">
@@ -78,7 +80,7 @@
           </a>
           <h3 class="media-heading">
             <a href="{{ h.url_for('organization.read', id=repository.name) }}">
-              {{ repository.title or repository.name }}
+               {{ repository.title or repository.name }}
             </a>
           </h3>
           {% if repository.description %}
@@ -89,10 +91,11 @@
         </header>
 
         {% if repository.packages %}
+
           <ul class="dataset-list">
             {% for ds in repository.packages %}
               <li>
-                <a href="{{ h.url_for(ds.type ~ '.read', id=ds.name) }}">{{ ds.title | truncate(50, True) }}</a>
+               {{ ds.metadata_modified.split('T')[0] }}&nbsp;&nbsp;&nbsp;<a href="{{ h.url_for(ds.type ~ '.read', id=ds.name) }}">{{ ds.title | truncate(50, True) }}</a>
               </li>
             {% endfor %}
           </ul>
