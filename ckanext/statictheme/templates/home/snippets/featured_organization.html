@@ -95,7 +95,7 @@
           <ul class="dataset-list">
             {% for ds in repository.packages %}
               <li>
-               {{ ds.metadata_modified.split('T')[0] }}&nbsp;&nbsp;&nbsp;<a href="{{ h.url_for(ds.type ~ '.read', id=ds.name) }}">{{ ds.title | truncate(50, True) }}</a>
+               {{ ds.metadata_modified.split('T')[0].split('-') | reverse | join('-') }}&nbsp;&nbsp;&nbsp;<a href="{{ h.url_for(ds.type ~ '.read', id=ds.name) }}">{{ ds.title | truncate(50, True) }}</a>
               </li>
             {% endfor %}
           </ul>
