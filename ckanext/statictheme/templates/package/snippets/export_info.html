@@ -1,4 +1,4 @@
-{% set url = h.url_for('home') + pkg.type + '/' %}
+{% set url = h.url_for('home.index') + pkg.type + '/' %}
 {% set url2 = url + pkg.name %}
 
     <section class="module module-narrow module-shallow export">
@@ -9,7 +9,7 @@
         <a target="_blank" href="{{ url2 }}.xml?profiles=euro_dcat_ap">DCAT-AP(xml) </a>
         <a target="_blank" href="{{ url2 }}.ttl?profiles=euro_dcat_ap">DCAT-AP(ttl) </a>
         <a target="_blank" href="{{ url2 }}.jsonld?profiles=euro_dcat_ap">DCAT-AP(jsonld) </a>
-          <a target="_blank" href="{{ url2 }}.xml?profiles=dcat_ap_nfdi4c2">DCAT-4NFDI-AP(xml) </a>
+<!--          <a target="_blank" href="{{ url2 }}.xml?profiles=dcat_ap_nfdi4c2">DCAT-4NFDI-AP(xml) </a>-->
 
 
 <!--        <a href="{{ url }}datacite/{{ pkg.name }}.xml">DataCite</a>-->

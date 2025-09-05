@@ -9,6 +9,8 @@ from flask import Blueprint, render_template, session , request, abort
 
 log = logging.getLogger(__name__)
 
+
+
 class StaticthemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -66,9 +68,10 @@ class StaticthemePlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         return {
             'repositories_dataset_present_count': helpers.repositories_dataset_present_count,
-            'get_measurement_count' : helpers.get_measurement_count
+            'get_measurement_count' : helpers.get_measurement_count,
             # 'repositories_present': repositories_present,
             # 'dataset_count':  dataset_count,
+            'get_recent_datasets_by_org': helpers.get_recent_datasets_by_org
         }
 
     # IBlueprint

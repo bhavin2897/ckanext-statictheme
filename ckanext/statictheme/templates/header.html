@@ -1,8 +1,9 @@
-{% ckan_extends %}
+{% ckan_extends%}
 
 {% block header_logo %}
  <a class="logo" href="/">
-    <img loading="lazy" src="/base/images/NFDI4Chem-Logo_mehrfarbig_schwarz.png" alt="NFDI4Chem" title="NFDI4Chem"
+    <img src="/base/images/NFDI4Chem-Logo_mehrfarbig_schwarz.svg" alt="NFDI4Chem" title="NFDI4Chem"  width="252"
+  height="100"
          />
  </a>
 
@@ -21,9 +22,8 @@
         ('statictheme.help',_('Help')),
   )
   }}
-{# ('footer.molecule_view', _('Molecule_view')), #}
-{% endblock %}
 
+{% endblock %}
 
 {% block header_site_search %}
 

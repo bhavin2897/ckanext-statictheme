@@ -140,3 +140,13 @@ body {
 .hero{
  background:url("");
 }
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.footer-links a:hover {
+  color: #00bfff;
+}

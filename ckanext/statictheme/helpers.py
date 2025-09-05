@@ -1,6 +1,9 @@
 import ckan.lib.helpers as h
 import ckan.plugins.toolkit as toolkit
 import ckan.plugins as plugins
+import datetime
+from ckan import model
+from sqlalchemy import func
 
 from collections import Counter
 import logging
@@ -29,3 +32,20 @@ def get_measurement_count(name,search_facets):
     """Number of datasets with measurement_technique_proxy field present."""
 
     return 'Nothing o Return'
+
+
+def get_recent_datasets_by_org():
+
+    one_month_ago = datetime.datetime.utcnow() - datetime.timedelta(days=90)
+
+    query = (
+        model.Session.query(model.Package.owner_org, func.count(model.Package.id))
+        .filter(model.Package.metadata_created >= one_month_ago)
+        .filter(model.Package.state == 'active')
+        .filter(model.Package.private == False)
+        .group_by(model.Package.owner_org)
+    )
+
+    result = {org_id: count for org_id, count in query}
+
+    return result

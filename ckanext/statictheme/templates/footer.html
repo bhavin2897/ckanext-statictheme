@@ -8,12 +8,13 @@
           <ul class="list-unstyled">
             {% block footer_links %}
                <p><a  href="https://www.dfg.de/" target="_blank">
-                <img src="/dfg_logo_schriftzug_weiss_foerderung_en.gif" alt="dfg.de" width ="300" height="100"> </a>
+                <img loading="lazy" src="/dfg_logo_schriftzug_weiss_foerderung_en.svg" alt="DFG Logo" width="300" height="98"   decoding="async"
+    style="max-width: 100%; height: auto;"> </a>
                    NFDI4Chem is funded by DFG Project Number 441958208
                </p>
-
             {% endblock %}
           </ul>
+
       </div>
          <div class="col-md-3 ">
           <ul class="list-unstyled">
@@ -47,23 +48,35 @@
 
     <hr>
 
-    <div class = "row">
-<!--        <div class = "col-md-2 footer-links">-->
-<!--            {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}-->
-<!--            <a href="{{ api_url }}" target="_blank">{{ _('CKAN API') }}</a>-->
-<!--        </div>-->
 
-        <div class = "col-md-11 footer-links">
-            <i class = "fa fa-linkedin-square "> </i>
-            <a href="https://www.linkedin.com/company/nfdi4chem/"  target="_blank">{{ _('LinkedIn') }}</a>
-        </div>
+<div class="row">
 
-        <div class = "col-md-1 footer-links">
-            <i class="fa-brands fa-x-twitter"></i>
-            <a href=" https://twitter.com/nfdi4chem" target="_blank">{{ _('Twitter') }}</a>
-        </div>
+       <div class="footer-links d-flex justify-content-space-around pt-3">
+           <!-- LinkedIn -->
+         <a href="https://www.linkedin.com/company/nfdi4chem/" target="_blank">
+           <i class="fab fa-linkedin fa-lg"></i>
+         </a>
+
+         <!-- YouTube -->
+         <a href="https://www.youtube.com/channel/UCQlKQDjyYFzlUFrDfR9vVJg" target="_blank">
+           <i class="fab fa-youtube fa-lg"></i>
+         </a>
+
+         <!-- X (Twitter) -->
+         <a href="https://x.com/nfdi4chem" target="_blank">
+           <i class="fab fa-x-twitter fa-lg"></i>
+         </a>
+
+         <!-- Instagram -->
+         <a href="https://www.instagram.com/nfdi4chem/" target="_blank">
+           <i class="fab fa-instagram fa-lg"></i>
+         </a>
+       </div>
 
     </div>
+
+
+
     {% endblock %}
 
 {% block footer_debug %}
@@ -90,6 +103,5 @@
 
 {% block styles %}
 {{ super() }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 {% endblock %}
